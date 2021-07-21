@@ -27,7 +27,6 @@
   <ItemGroup>
     <Folder Include="Common\Mapping\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Configurations\" />
     <Folder Include="DataProviders\Abstractions\" />
     <Folder Include="Models\Responses\" />
     <Folder Include="Models\Requests\" />
