@@ -7,6 +7,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OrderApi.Configurations;
 using OrderApi.Data;
+using OrderApi.DataProviders;
+using OrderApi.DataProviders.Abstractions;
+using OrderApi.Services;
+using OrderApi.Services.Abstractions;
 
 namespace OrderApi
 {
@@ -35,6 +39,8 @@ namespace OrderApi
             var connectionString = AppConfiguration["OrderApi:ConnectionString"];
             services.AddDbContextFactory<OrdersDbContext>(
                 opts => opts.UseNpgsql(connectionString));
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IOrderProvider, OrderProvider>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
