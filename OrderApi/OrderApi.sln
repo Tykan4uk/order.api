@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{D4EB0D26-828D-4213-AD05-D9780F3579E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{94ABF944-0D51-40A7-9EC2-4343FE2D40EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CB5F6580-4A1F-4B60-97B4-BDB95F12226D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0756CB41-55A9-4C43-B238-C03EA4E2C333}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		Readme = Readme
+		settings.ruleset = settings.ruleset
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderApi.Service", "services\OrderApi.Service\OrderApi.Service.csproj", "{896FC1F8-B5F4-4DBA-AA5B-E0C5EA85EE27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderApi", "src\OrderApi\OrderApi.csproj", "{6C843AEE-CE96-4783-8E9C-03B6CAEA3911}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{896FC1F8-B5F4-4DBA-AA5B-E0C5EA85EE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896FC1F8-B5F4-4DBA-AA5B-E0C5EA85EE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896FC1F8-B5F4-4DBA-AA5B-E0C5EA85EE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896FC1F8-B5F4-4DBA-AA5B-E0C5EA85EE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C843AEE-CE96-4783-8E9C-03B6CAEA3911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C843AEE-CE96-4783-8E9C-03B6CAEA3911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C843AEE-CE96-4783-8E9C-03B6CAEA3911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C843AEE-CE96-4783-8E9C-03B6CAEA3911}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{896FC1F8-B5F4-4DBA-AA5B-E0C5EA85EE27} = {D4EB0D26-828D-4213-AD05-D9780F3579E3}
+		{6C843AEE-CE96-4783-8E9C-03B6CAEA3911} = {94ABF944-0D51-40A7-9EC2-4343FE2D40EE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA1B2871-1555-4F1C-8568-6AE4A9CBE903}
+	EndGlobalSection
+EndGlobal
