@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Mapping\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
 
