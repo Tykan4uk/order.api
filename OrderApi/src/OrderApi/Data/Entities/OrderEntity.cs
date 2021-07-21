@@ -5,7 +5,7 @@ namespace OrderApi.Data.Entities
 {
     public class OrderEntity
     {
-        public string OrderId { get; set; }
+        public string Id { get; set; }
         public DateTime CreateDate { get; set; }
         public string ProductId { get; set; }
         public string Name { get; set; }
