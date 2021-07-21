@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OrderApi.Models.Responses
 {
     public class GetByIdResponse
     {
+        public List<ProductModel> Products { get; set; }
     }
 }
