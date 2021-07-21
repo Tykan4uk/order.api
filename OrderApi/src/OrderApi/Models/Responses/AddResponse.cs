@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrderApi.Models.Responses
+﻿namespace OrderApi.Models.Responses
 {
     public class AddResponse
     {
+        public OrderModel Order { get; set; }
     }
 }
