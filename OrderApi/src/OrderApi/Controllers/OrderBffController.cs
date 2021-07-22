@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OrderApi.Models.Requests;
@@ -8,6 +9,7 @@ namespace OrderApi.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]/[action]")]
+    [Authorize(Policy = "ApiScopeBff")]
     public class OrderBffController : ControllerBase
     {
         private readonly ILogger<OrderBffController> _logger;
