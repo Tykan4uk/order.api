@@ -3,23 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using OrderApi.Common.Exceptions;
 using OrderApi.Data;
 using OrderApi.Data.Entities;
 using OrderApi.DataProviders.Abstractions;
+using OrderApi.Services.Abstractions;
 
 namespace OrderApi.DataProviders
 {
     public class OrderProvider : IOrderProvider
     {
         private readonly OrdersDbContext _ordersDbContext;
+        private readonly ILogger<OrderProvider> _logger;
 
-        public OrderProvider(IDbContextFactory<OrdersDbContext> dbContextFactory)
+        public OrderProvider(
+            IDbContextWrapper<OrdersDbContext> dbContextWrapper,
+            ILogger<OrderProvider> logger)
         {
-            _ordersDbContext = dbContextFactory.CreateDbContext();
+            _ordersDbContext = dbContextWrapper.DbContext;
+            _logger = logger;
         }
 
         public async Task<PagingDataResult> GetByPageAsync(string userId, int page, int pageSize)
         {
+            if (page <= 0 || pageSize <= 0)
+            {
+                _logger.LogError("(OrderProvider/GetByPageAsync)Page or page size error!");
+                throw new BusinessException("Page or page size error!");
+            }
+
             var totalRecords = await _ordersDbContext.Orders.Where(w => w.UserId == userId).CountAsync();
             var pageData = await _ordersDbContext.Orders
                 .OrderBy(o => o.CreateDate)
