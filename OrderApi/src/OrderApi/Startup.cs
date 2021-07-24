@@ -68,6 +68,7 @@ namespace OrderApi
                 opts => opts.UseNpgsql(connectionString));
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IOrderProvider, OrderProvider>();
+            services.AddScoped<IDbContextWrapper<OrdersDbContext>, DbContextWrapper<OrdersDbContext>>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
