@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using OrderApi.Data;
 using OrderApi.Data.Entities;
 using OrderApi.DataProviders.Abstractions;
@@ -11,16 +11,17 @@ using OrderApi.Services.Abstractions;
 
 namespace OrderApi.Services
 {
-    public class OrderService : BaseDataService, IOrderService
+    public class OrderService : BaseDataService<OrdersDbContext>, IOrderService
     {
         private readonly IOrderProvider _orderProvider;
         private readonly IMapper _mapper;
 
         public OrderService(
-            IDbContextFactory<OrdersDbContext> factory,
+            IDbContextWrapper<OrdersDbContext> wrapper,
             IOrderProvider orderProvider,
-            IMapper mapper)
-            : base(factory)
+            IMapper mapper,
+            ILogger<OrderService> logger)
+            : base(wrapper, logger)
         {
             _orderProvider = orderProvider;
             _mapper = mapper;
