@@ -27,21 +27,42 @@ namespace OrderApi.Controllers
         public async Task<IActionResult> GetByPage([FromQuery] GetByPageRequest request)
         {
             var result = await _orderService.GetByPageAsync(request.UserId, request.Page, request.PageSize);
-            return result != null ? Ok(result) : BadRequest(result);
+
+            if (result == null)
+            {
+                _logger.LogInformation("(ManageController/GetByPage)Null result. Bad request.");
+                return BadRequest(result);
+            }
+
+            return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetById([FromQuery] GetByIdRequest request)
         {
             var result = await _orderService.GetByIdAsync(request.UserId, request.OrderId);
-            return result != null ? Ok(result) : BadRequest(result);
+
+            if (result == null)
+            {
+                _logger.LogInformation("(ManageController/GetById)Null result. Bad request.");
+                return BadRequest(result);
+            }
+
+            return Ok(result);
         }
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] AddRequest request)
         {
             var result = await _orderService.AddAsync(request.UserId, request.Products);
-            return result != null ? Ok(result) : BadRequest(result);
+
+            if (result == null)
+            {
+                _logger.LogInformation("(ManageController/Add)Null result. Bad request.");
+                return BadRequest(result);
+            }
+
+            return Ok(result);
         }
     }
 }
