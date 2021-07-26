@@ -9,6 +9,7 @@ namespace OrderApi.Data.Entities
         public string Description { get; set; }
         public decimal Price { get; set; }
         public ProductTypeEnum Type { get; set; }
+        public int Count { get; set; }
 
         public string OrderId { get; set; }
         public OrderEntity Order { get; set; }
