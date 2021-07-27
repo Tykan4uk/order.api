@@ -35,6 +35,7 @@ namespace OrderApi.DataProviders
 
             var totalRecords = await _ordersDbContext.Orders.Where(w => w.UserId == userId).CountAsync();
             var pageData = await _ordersDbContext.Orders
+                .Where(w => w.UserId == userId)
                 .OrderBy(o => o.CreateDate)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
@@ -58,14 +59,14 @@ namespace OrderApi.DataProviders
         {
             var createDate = DateTime.Now;
             var id = Guid.NewGuid().ToString();
-            var result = await _ordersDbContext.Orders.AddAsync(
-                new OrderEntity()
-                {
-                    Id = id,
-                    UserId = userId,
-                    CreateDate = createDate,
-                    Products = products
-                });
+            var order = new OrderEntity()
+            {
+                Id = id,
+                UserId = userId,
+                CreateDate = createDate,
+                Products = products
+            };
+            var result = await _ordersDbContext.Orders.AddAsync(order);
             await _ordersDbContext.SaveChangesAsync();
 
             return result.Entity;
